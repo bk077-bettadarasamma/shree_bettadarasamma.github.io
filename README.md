@@ -64,6 +64,28 @@
 
   <footer>
     © 2025 | Bettadarasamma Devi Website | Created with ❤️
-  </footer>
+  <footer/>
+<head>
+  <meta charset="utf-8">
+  <title>SSLC Result Lookup</title>
+</head>
+<body>
+  <h2>Enter Name and Quiz ID</h2>
+  <input id="name" placeholder="Name">
+  <input id="quiz" placeholder="Quiz ID">
+  <button onclick="getResult()">View Result</button>
+  <pre id="out"></pre>
+
+<script>
+async function getResult(){
+  const name = document.getElementById('name').value;
+  const quiz = document.getElementById('quiz').value;
+  const res = await fetch(`/api/result?quiz_id=${encodeURIComponent(quiz)}&name=${encodeURIComponent(name)}`);
+  const data = await res.json();
+  document.getElementById('out').textContent = JSON.stringify(data, null, 2);
+}
+</script>
+</body>
+</html>
 </body>
 </html>
